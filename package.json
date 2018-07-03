@@ -1,0 +1,19 @@
+{
+  "name": "daostack-cli",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "preferGlobal": true,
+  "bin": "./daostack.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "oren@daostack.io",
+  "license": "",
+  "dependencies": {
+    "commander": "^2.16.0",
+    "inquirer": "6.0.0",
+    "@daostack/arc.js": "0.0.0-alpha.62"
+  }
+}
