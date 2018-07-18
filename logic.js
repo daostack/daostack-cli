@@ -8,8 +8,9 @@ const arcJs = require('@daostack/arc.js');
  */
 const createDao = async function (params) {
   await arcJs.InitializeArcJs({
-    "useNetworkDefaultsFor": "ganache"
+    "useNetworkDefaultsFor": "ganache",
     });
+  //arcJs.LoggingService.logLevel = arcJs.LogLevel.all;
   var founders_ = require(params.foundersFilePath);
   var schemes_ = await getSchemesArray(params.schemes);
   const newDao = await arcJs.DAO.new({
@@ -41,6 +42,7 @@ const contributionRewardPropose = async function (params) {
   await arcJs.InitializeArcJs({
     "useNetworkDefaultsFor": "ganache"
     });
+  //arcJs.LoggingService.logLevel = arcJs.LogLevel.all;
   const dao = await arcJs.DAO.at(params.avatarAddress);
   const contributionReward = await dao.getSchemes("ContributionReward");
   if (contributionReward.length == 0) {

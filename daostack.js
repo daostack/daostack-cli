@@ -59,6 +59,10 @@ const createDaoQuestions = [
           checked:true
         },
         {
+          name: 'GenesisProtocol',
+          checked:true
+        },
+        {
           name: 'ContributionReward'
         },
         {
