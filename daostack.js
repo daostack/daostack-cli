@@ -4,10 +4,11 @@ const program = require('commander');
 const { prompt } = require('inquirer');
 
 const {
-  createDao
+  createDao,
+  contributionRewardPropose
 } = require('./logic');
 
-const questions = [
+const createDaoQuestions = [
   {
     type : 'input',
     name : 'daoName',
@@ -41,12 +42,41 @@ const questions = [
     ]
   },
   {
-    type: 'input',
-    name: 'foundersFilePath',
-    message: 'Enter founders file path',
-    when: function(answers) {
-      return answers.foundersFilePath == 'edit';
-    }
+    type: 'checkbox',
+    name: 'schemes',
+    message: 'Select schemes',
+    choices: [
+        {
+          name: 'SchemeRegistrar',
+          checked:true
+        },
+        {
+          name: 'UpgradeScheme',
+          checked:true
+        },
+        {
+          name: 'GlobalConstraintRegistrar',
+          checked:true
+        },
+        {
+          name: 'ContributionReward'
+        },
+        {
+          name: 'GenericScheme'
+        }
+      ],
+    validate: function(answer) {
+        return true;
+      }
+  }
+];
+
+
+const contributionRewardProposeQuestions = [
+  {
+    type : 'input',
+    name : 'avatarAddress',
+    message : 'Dao(Avatar) Address'
   }
 ];
 
@@ -59,8 +89,17 @@ program
   .alias('c')
   .description('create a DAO')
   .action(() => {
-    prompt(questions).then((answers) =>
+    prompt(createDaoQuestions).then((answers) =>
       createDao(answers));
+  });
+
+program
+  .command('contributionRewardPropose')
+  .alias('c')
+  .description('contribution rewards propose')
+  .action(() => {
+      prompt(contributionRewardProposeQuestions).then((answers) =>
+        contributionRewardPropose(answers));
   });
 
 // Assert that a VALID command is provided

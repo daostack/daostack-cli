@@ -14,6 +14,6 @@
   "dependencies": {
     "commander": "^2.16.0",
     "inquirer": "6.0.0",
-    "@daostack/arc.js": "0.0.0-alpha.62"
+    "@daostack/arc.js": "0.0.0-alpha.65"
   }
 }
